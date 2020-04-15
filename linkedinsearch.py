@@ -144,6 +144,7 @@ for k in range(lenSearch):
     if len(profiles[k])==0:
         out_dict["firstName"][-1] = (" ".join(fullnames[k]))
         out_dict["personCode"][-1] = personcodes[k]
+        out_dict["firstName"][-1]       =     out_dict["firstName"][-1]      .replace('`','')
         out_dict["nkeys"][-1] = 0
         continue
     print(fullnames[k],profiles[k])
@@ -158,6 +159,14 @@ for k in range(lenSearch):
     out_dict["location"][-1] = profile["locationName"] if "locationName" in profile.keys() else ""
     out_dict["nkeys"][-1] = profiles[k][0]["nkeys"] 
 
+
+    #removing all backticks since they mess up exporting to stata format
+    out_dict["firstName"][-1]       =     out_dict["firstName"][-1]      .replace('`','')
+    out_dict["lastName"][-1]        =     out_dict["lastName"][-1]       .replace('`','')
+    out_dict["personCode"][-1]      =     out_dict["personCode"][-1]     .replace('`','')
+    out_dict["linkedinProfile"][-1] =     out_dict["linkedinProfile"][-1].replace('`','')
+    out_dict["location"][-1]        =     out_dict["location"][-1]       .replace('`','')
+    
     theExperience = profile["experience"] if "experience" in profile.keys() else {}
     theExperience = theExperience[:10]
 
@@ -179,7 +188,13 @@ for k in range(lenSearch):
         yearE = endDate["year"] if "year" in endDate.keys() else "x"
         out_dict["experience%s_endDate"%(iexp+1)][-1]     =  str(monthE)+"."+str(yearE)
 
-
+        #removing all backticks since they mess up exporting to stata format
+        out_dict["experience%s_location"%(iexp+1)][-1]    = out_dict["experience%s_location"%(iexp+1)][-1]    .replace('`','') 
+        out_dict["experience%s_companyName"%(iexp+1)][-1] = out_dict["experience%s_companyName"%(iexp+1)][-1] .replace('`','')
+        out_dict["experience%s_title"%(iexp+1)][-1]       = out_dict["experience%s_title"%(iexp+1)][-1]       .replace('`','')
+        out_dict["experience%s_startDate"%(iexp+1)][-1]   = out_dict["experience%s_startDate"%(iexp+1)][-1]   .replace('`','')
+        out_dict["experience%s_endDate"%(iexp+1)][-1]     = out_dict["experience%s_endDate"%(iexp+1)][-1]     .replace('`','')
+        
     theEducation = profile["education"] if "education" in profile.keys() else {}
     theEducation = theEducation[:5]
     for ied in range(len(theEducation)):
@@ -201,6 +216,12 @@ for k in range(lenSearch):
         yearE = endDate["year"] if "year" in endDate.keys() else "x"
         out_dict["education%s_endDate"%(ied+1)][-1]     =  str(monthE)+"."+str(yearE)
 
+        out_dict["education%s_schoolName"%(ied+1)][-1]   = out_dict["education%s_schoolName"%(ied+1)][-1]  .replace('`','')
+        out_dict["education%s_degreeName"%(ied+1)][-1]   = out_dict["education%s_degreeName"%(ied+1)][-1]  .replace('`','')
+        out_dict["education%s_fieldOfStudy"%(ied+1)][-1] = out_dict["education%s_fieldOfStudy"%(ied+1)][-1].replace('`','')
+        out_dict["education%s_grade"%(ied+1)][-1]        = out_dict["education%s_grade"%(ied+1)][-1]       .replace('`','')
+        out_dict["education%s_startDate"%(ied+1)][-1]    = out_dict["education%s_startDate"%(ied+1)][-1]   .replace('`','')
+        out_dict["education%s_endDate"%(ied+1)][-1]      = out_dict["education%s_endDate"%(ied+1)][-1]     .replace('`','')
         
 
         
