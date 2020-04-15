@@ -227,4 +227,4 @@ for k in range(lenSearch):
         
 df = pd.DataFrame.from_dict(out_dict)
 print(df)
-df.to_stata('linkedinData_rows%sto%s.dta'%(args.firstRow,args.lastRow)) 
+df.to_stata('linkedinData_rows%sto%s.dta'%(args.firstRow,args.lastRow), version=118) 
