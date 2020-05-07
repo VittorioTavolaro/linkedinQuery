@@ -158,10 +158,10 @@ for k in range(lenSearch):
         out_dict["education%s_endDate"%(ied+1)][-1]      = out_dict["education%s_endDate"%(ied+1)][-1]     .replace('`','')
         
 
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(out_dict)
+#import pprint
+#pp = pprint.PrettyPrinter(indent=4)
+#pp.pprint(out_dict)
         
 df = pd.DataFrame.from_dict(out_dict)
-print(df.to_string())
+print(df)
 df.to_stata('linkedinDataProfileSearch_rows%sto%s.dta'%(args.firstRow,args.lastRow), version=118) 
