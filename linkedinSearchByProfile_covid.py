@@ -26,8 +26,8 @@ fullnames = insheet.col_values(6)
 #names = insheet.col_values(5)
 #surnames = insheet.col_values(6)
 #companies = insheet.col_values(10)
-profileurls = insheet.col_values(12)##was 14
-indexes = insheet.col_values(12)
+profileurls = insheet.col_values(11)##was 14
+indexes = insheet.col_values(9)
 
 personcodes = personcodes[args.firstRow:args.lastRow+1]
 fullnames   = fullnames[args.firstRow:args.lastRow+1]
