@@ -76,7 +76,8 @@ api = Linkedin(usern, passw, refresh_cookies=True)
 for k in range(lenSearch):
     for dictk in out_dict.keys():
         out_dict[dictk].append("")
-    profile = api.get_profile(profileurls[k].split('/')[3]) #get public_id from profile url        
+    print(profileurls[k].split('/'))
+    profile = api.get_profile(profileurls[k].split('/')[4]) #get public_id from profile url        
     if len(profile)==0:
         out_dict["firstName"][-1] = (" ".join(fullnames[k]))
 #        out_dict["personCode"][-1] = personcodes[k]
